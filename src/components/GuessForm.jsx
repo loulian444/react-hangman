@@ -16,7 +16,14 @@ const GuessForm = ({ guessCollection, setGuessedLetter }) => {
         })}
       </p>
       <form onSubmit={submitHandler}>
-        <input type="text" size={3} pattern="[a-z]" maxLength={1} required />
+        <input
+          type="text"
+          size={3}
+          pattern="[a-z]"
+          maxLength={1}
+          title="Input must be a letter"
+          required
+        />
         <button>Submit</button>
       </form>
     </>
