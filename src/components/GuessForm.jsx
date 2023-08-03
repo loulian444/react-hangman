@@ -1,4 +1,4 @@
-const GuessForm = ({ guessCollection, setGuessedLetter }) => {
+const GuessForm = ({ setGuessedLetter }) => {
   const submitHandler = (event) => {
     event.preventDefault();
     setGuessedLetter(event.target.children[0].value);
@@ -9,12 +9,7 @@ const GuessForm = ({ guessCollection, setGuessedLetter }) => {
   return (
     <>
       <h2>Guess Form</h2>
-      <p>
-        Your Guesses:{" "}
-        {guessCollection.map((guess) => {
-          return `${guess} `;
-        })}
-      </p>
+      
       <form onSubmit={submitHandler}>
         <input
           type="text"

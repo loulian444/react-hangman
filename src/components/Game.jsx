@@ -9,9 +9,7 @@ const Game = () => {
   const apiLink = `https://random-word-api.vercel.app/api?length=${wordLength}`;
 
   const [currentWord, setCurrentWord] = useState(null);
-
   const [guessedLetter, setGuessedLetter] = useState(``);
-
   const [guessCollection, setGuessCollection] = useState([]);
 
   useEffect(() => {
@@ -41,12 +39,12 @@ const Game = () => {
   return (
     <>
       <h3>Guesses Remaining:</h3>
-      <GuessForm guessCollection={guessCollection} setGuessedLetter = {setGuessedLetter} />
       <WordDisplay currentWord={currentWord} />
       <button onClick={() => setRandomNumber(Math.random() * 3)}>
         Request New Word
       </button>
-      <Graveyard />
+      <GuessForm setGuessedLetter = {setGuessedLetter} />
+      <Graveyard guessCollection={guessCollection} />
     </>
   );
 };
