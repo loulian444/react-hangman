@@ -3,7 +3,7 @@ const Graveyard = ({ guessCollection }) => {
     <>
       <h2>Graveyard</h2>
       <p>
-        Your Guesses:{" "}
+        Your Wrong Guesses:{" "}
         {guessCollection.map((guess) => {
           return `${guess} `;
         })}

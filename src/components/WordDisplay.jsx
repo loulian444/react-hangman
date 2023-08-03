@@ -1,8 +1,8 @@
-const WordDisplay = ({ currentWord }) => {
+const WordDisplay = ({ displayArray }) => {
   return (
     <>
       <h2>Word Display</h2>
-      <p>Current Word: {currentWord}</p>
+      <p>Current Word: {displayArray}</p>
     </>
   );
 };
