@@ -1,9 +1,8 @@
 const GuessForm = ({ guessedLetter, setGuessedLetter, formSubmitHandler }) => {
   return (
     <>
-      <h2>Guess Form</h2>
-
       <form onSubmit={formSubmitHandler}>
+        <h4>Guess a letter:</h4>
         <input
           type="text"
           size={3}

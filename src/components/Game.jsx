@@ -11,18 +11,30 @@ const Game = () => {
   const [currentWord, setCurrentWord] = useState(null);
   const [displayArray, setDisplayArray] = useState([]);
   const [guessedLetter, setGuessedLetter] = useState(``);
-  const [guessCollection, setGuessCollection] = useState([]);
+  const [incorrectGuesses, setIncorrectGuesses] = useState([]);
 
   const formSubmitHandler = (event) => {
     event.preventDefault();
 
-    console.log(currentWord.includes(guessedLetter) ? `correct` : `wrong`);
+    const isCorrect = currentWord.includes(guessedLetter);
 
-    const newGuessCollection = [...guessCollection];
+    console.log(isCorrect ? `correct` : `wrong`);
 
-    if (!currentWord.includes(guessedLetter)) {
+    const newGuessCollection = [...incorrectGuesses];
+
+    if (isCorrect) {
+      const copyOfDisplayArray = [...displayArray];
+
+      for (let i = 0; i < currentWord.length; i++) {
+        if (currentWord[i] === guessedLetter) {
+          copyOfDisplayArray[i] = guessedLetter;
+        }
+      }
+
+      setDisplayArray(copyOfDisplayArray);
+    } else {
       newGuessCollection.push(guessedLetter);
-      setGuessCollection(newGuessCollection);
+      setIncorrectGuesses(newGuessCollection);
     }
 
     event.target.reset();
@@ -35,7 +47,7 @@ const Game = () => {
         const data = await response.json();
 
         setCurrentWord(data[0]);
-        setGuessCollection([]);
+        setIncorrectGuesses([]);
 
         const wordArr = [...data[0]];
 
@@ -62,7 +74,7 @@ const Game = () => {
         setGuessedLetter={setGuessedLetter}
         formSubmitHandler={formSubmitHandler}
       />
-      <Graveyard guessCollection={guessCollection} />
+      <Graveyard incorrectGuesses={incorrectGuesses} />
     </>
   );
 };

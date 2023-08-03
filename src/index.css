@@ -68,3 +68,8 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+#displayArray {
+  letter-spacing: 5px;
+  font-size: xx-large;
+}
